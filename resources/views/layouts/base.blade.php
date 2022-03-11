@@ -16,7 +16,7 @@
 	<link rel="stylesheet" type="text/css" href="assets/css/chosen.min.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/color-01.css">
- 
+	@livewireStyles
 </head>
 <body class="home-page home-01 ">
 
@@ -461,5 +461,6 @@
 	<script src="assets/js/jquery.countdown.min.js"></script>
 	<script src="assets/js/jquery.sticky.js"></script>
 	<script src="assets/js/functions.js"></script>
+	@livewireScripts
 </body>
 </html>

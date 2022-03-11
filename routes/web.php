@@ -26,4 +26,3 @@ Route::get('/checkout', CheckoutComponent::class);
 Route::get('/about-us', AboutUsComponent::class);
 Route::get('/contact-us', ContactUsComponent::class);
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/', HomeComponent::class);
