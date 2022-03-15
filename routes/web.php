@@ -28,6 +28,7 @@ Route::get('/cart', CartComponent::class);
 Route::get('/checkout', CheckoutComponent::class);
 Route::get('/about-us', AboutUsComponent::class);
 Route::get('/contact-us', ContactUsComponent::class);
+Route::get('/product/{slug}', ProductDetailsComponent::class)->name('product.details');
 
 // For User or Guest
 Route::middleware(['auth:sanctum', 'verified'])->group(function() {
