@@ -23,9 +23,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', HomeComponent::class);
-Route::get('/shop', ShopComponent::class);
-Route::get('/cart', CartComponent::class);
-Route::get('/checkout', CheckoutComponent::class);
+Route::get('/shop', ShopComponent::class)->name('product.shop');
+Route::get('/cart', CartComponent::class)->name('product.cart');
+Route::get('/checkout', CheckoutComponent::class)->name('product.checkout');
 Route::get('/about-us', AboutUsComponent::class);
 Route::get('/contact-us', ContactUsComponent::class);
 Route::get('/product/{slug}', ProductDetailsComponent::class)->name('product.details');

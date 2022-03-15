@@ -7,6 +7,7 @@
     
 	<title>Surface Media</title>	
     @include('layouts.partials.styles')
+	@livewireStyles
 </head>
 <body class="home-page home-01 ">
 
@@ -17,5 +18,6 @@
 	@include('layouts.partials.footer')
 	
 	@include('layouts.partials.scripts')
+	@livewireScripts
 </body>
 </html>

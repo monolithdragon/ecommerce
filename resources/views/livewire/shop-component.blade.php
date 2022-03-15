@@ -74,7 +74,7 @@
                                         <a href="{{ route('product.details', ['slug' => $product->slug]) }}" class="product-name"><span>{{ $product->name }}</span></a>
                                         <div class="wrap-price"><span
                                                 class="product-price">${{ $product->price }}</span></div>
-                                        <a href="#" class="btn add-to-cart">Add To Cart</a>
+                                        <a href="#" class="btn add-to-cart" wire:click.prevent="store({{ $product->id }}, '{{ $product->name }}', {{ $product->price }})">Add To Cart</a>
                                     </div>
                                 </div>
                             </li>
@@ -229,7 +229,7 @@
                                     <div class="thumbnnail">
                                         <a href="detail.html"
                                             title="Radiant-360 R6 Wireless Omnidirectional Speaker [White]">
-                                            <figure><img src="{{ asset('assets/images/products/digital_01.jpg') }}"
+                                            <figure><img src="{{ asset('assets/images/products/digital_1.jpg') }}"
                                                     alt=""></figure>
                                         </a>
                                     </div>
