@@ -9,17 +9,36 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 class ProductDetailsComponent extends Component
 {
     public $slug;
+    public $qty;
 
     public function mount($slug)
     {
         $this->slug = $slug;
+        $this->qty = 1;
     }
 
     public function store($id, $name, $price)
     {
-        Cart::add($id, $name, 1, $price)->associate('App\Models\Product');
+        Cart::add($id, $name, $this->qty, $price)->associate('App\Models\Product');
         session()->flash('success_messages', 'Item added to cart');
         return redirect()->route('product.cart');
+    }
+
+    public function increaseQuantity() 
+    {
+        $this->qty++;
+        $product = Product::where('slug', $this->slug)->first();
+        if ($this->qty > $product->quantity)
+            $this->qty = $product->quantity;
+
+        
+    }
+
+    public function reduceQuantity() 
+    {
+        $this->qty--;
+        if ($this->qty < 1)
+            $this->qty = 1;
     }
 
     public function render()
