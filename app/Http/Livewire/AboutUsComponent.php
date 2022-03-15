@@ -8,6 +8,6 @@ class AboutUsComponent extends Component
 {
     public function render()
     {
-        return view('livewire.about-us-component')->layout('layouts.base');
+        return view('livewire.about-us-component');
     }
 }
