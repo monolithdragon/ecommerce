@@ -58,13 +58,14 @@ class CategoryComponent extends Component
     {
         $category = Category::where('slug', $this->category_slug)->first();
         $products = $this->getProducts($category->id);
-
         $categories = Category::all();
+        $popular_products = Product::inRandomOrder()->limit(4)->get();
 
         return view('livewire.category-component', [
             'products' => $products,
             'categories' => $categories,
-            'category_name' => $category->name
+            'category_name' => $category->name,
+            'popular_products' => $popular_products
         ]);
     }
 }

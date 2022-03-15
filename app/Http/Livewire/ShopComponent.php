@@ -54,12 +54,13 @@ class ShopComponent extends Component
     public function render()
     {
         $products = $this->getProducts();
-
         $categories = Category::all();
+        $popular_products = Product::inRandomOrder()->limit(4)->get();
         
         return view('livewire.shop-component', [
             'products' => $products,
-            'categories' => $categories
+            'categories' => $categories,
+            'popular_products' => $popular_products
         ]);
     }
 }
