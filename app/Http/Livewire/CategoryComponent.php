@@ -8,19 +8,22 @@ use Livewire\WithPagination;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Models\Category;
 
-class ShopComponent extends Component
+class CategoryComponent extends Component
 {
-    use WithPagination; 
+    use WithPagination;
 
     public $sorting;
     public $pageSize;
+    public $category_slug;
 
-    public function mount()
+    public function mount($category_slug)
     {
         $this->sorting = 'default';
         $this->pageSize = 12;
+        $this->$category_slug = $category_slug;
+
     }
-    
+
     public function store($id, $name, $price)
     {
         Cart::add($id, $name, 1, $price)->associate('App\Models\Product');
@@ -28,23 +31,23 @@ class ShopComponent extends Component
         return redirect()->route('product.cart');
     }
 
-    private function getProducts()
+    private function getProducts($id)
     {
         switch ($this->sorting) {
             case 'date':
-                $sortProducts = Product::orderBy('created_at', 'DESC')->paginate($this->pageSize);
+                $sortProducts = Product::where('category_id', $id)->orderBy('created_at', 'DESC')->paginate($this->pageSize);
                 break;
-            
+
             case 'price':
-                $sortProducts = Product::orderBy('price', 'ASC')->paginate($this->pageSize);
+                $sortProducts = Product::where('category_id', $id)->orderBy('price', 'ASC')->paginate($this->pageSize);
                 break;
 
             case 'price-desc':
-                $sortProducts = Product::orderBy('price', 'DESC')->paginate($this->pageSize);
+                $sortProducts = Product::where('category_id', $id)->orderBy('price', 'DESC')->paginate($this->pageSize);
                 break;
-            
+
             default:
-                $sortProducts = Product::paginate($this->pageSize);
+                $sortProducts = Product::where('category_id', $id)->paginate($this->pageSize);
                 break;
         }
 
@@ -53,13 +56,15 @@ class ShopComponent extends Component
 
     public function render()
     {
-        $products = $this->getProducts();
+        $category = Category::where('slug', $this->category_slug)->first();
+        $products = $this->getProducts($category->id);
 
         $categories = Category::all();
-        
-        return view('livewire.shop-component', [
+
+        return view('livewire.category-component', [
             'products' => $products,
-            'categories' => $categories
+            'categories' => $categories,
+            'category_name' => $category->name
         ]);
     }
 }

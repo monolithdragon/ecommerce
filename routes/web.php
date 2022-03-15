@@ -3,6 +3,7 @@
 use App\Http\Livewire\AboutUsComponent;
 use App\Http\Livewire\Admin\AdminDashboardComponent;
 use App\Http\Livewire\CartComponent;
+use App\Http\Livewire\CategoryComponent;
 use App\Http\Livewire\CheckoutComponent;
 use App\Http\Livewire\ContactUsComponent;
 use App\Http\Livewire\HomeComponent;
@@ -29,6 +30,7 @@ Route::get('/checkout', CheckoutComponent::class)->name('product.checkout');
 Route::get('/about-us', AboutUsComponent::class);
 Route::get('/contact-us', ContactUsComponent::class);
 Route::get('/product/{slug}', ProductDetailsComponent::class)->name('product.details');
+Route::get('/product_category/{category_slug}', CategoryComponent::class)->name('product.category');
 
 // For User or Guest
 Route::middleware(['auth:sanctum', 'verified'])->group(function() {
