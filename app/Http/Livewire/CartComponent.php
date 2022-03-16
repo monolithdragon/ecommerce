@@ -29,8 +29,11 @@ class CartComponent extends Component
 
     public function deleteAll() 
     {
-        Cart::destroy();
-        session()->flash('success_messages', 'All items has been removed');
+        if (Cart::count() > 0)
+        {
+            Cart::destroy();
+            session()->flash('success_messages', 'All items has been removed');
+        }
     }
 
     public function render()

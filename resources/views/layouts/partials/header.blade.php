@@ -171,6 +171,8 @@
 
                                     @if (Cart::count() > 0)
                                         <span class="index">{{ Cart::count() }} items</span>
+                                    @else
+                                        <span class="index">0 item</span>
                                     @endif
                                     <span class="title">CART</span>
                                     
