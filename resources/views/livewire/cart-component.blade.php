@@ -33,7 +33,16 @@
                                         href="{{ route('product.details', ['slug' => $item->model->slug]) }}">{{ $item->model->name }}</a>
                                 </div>
                                 <div class="price-field produtc-price">
-                                    <p class="price">${{ $item->model->price }}</p>
+
+                                    @if ($item->model->sale_price > 0)
+
+                                        <p class="price">${{ $item->model->sale_price }}</p>
+
+                                    @else
+
+                                        <p class="price">${{ $item->model->price }}</p>
+
+                                    @endif
                                 </div>
                                 <div class="quantity">
                                     <div class="quantity-input">
