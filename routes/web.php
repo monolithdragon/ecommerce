@@ -24,13 +24,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', HomeComponent::class);
-Route::get('/shop', ShopComponent::class)->name('product.shop');
 Route::get('/cart', CartComponent::class)->name('product.cart');
 Route::get('/checkout', CheckoutComponent::class)->name('product.checkout');
 Route::get('/about-us', AboutUsComponent::class);
 Route::get('/contact-us', ContactUsComponent::class);
 Route::get('/product/{slug}', ProductDetailsComponent::class)->name('product.details');
-Route::get('/product_category/{category_slug}', CategoryComponent::class)->name('product.category');
+Route::get('/shop/{category_slug}', ShopComponent::class)->name('product.category');
 
 // For User or Guest
 Route::middleware(['auth:sanctum', 'verified'])->group(function() {

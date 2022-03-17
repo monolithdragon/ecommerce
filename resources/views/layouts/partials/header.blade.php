@@ -220,7 +220,7 @@
                                 <a href="/about-us" class="link-term mercado-item-title">About Us</a>
                             </li>
                             <li class="menu-item">
-                                <a href="/shop" class="link-term mercado-item-title">Shop</a>
+                                <a href="/shop/{{ Str::slug('Fashion & Accessories') }}" class="link-term mercado-item-title">Shop</a>
                             </li>
                             <li class="menu-item">
                                 <a href="/cart" class="link-term mercado-item-title">Cart</a>

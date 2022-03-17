@@ -87,7 +87,7 @@
                             have promo code</span>
                     </label>
                     <a class="btn btn-checkout" href="{{ route('product.checkout') }}">Check out</a>
-                    <a class="link-to-shop" href="{{ route('product.shop') }}">Continue Shopping<i class="fa fa-arrow-circle-right"
+                    <a class="link-to-shop" href="{{ route('product.category', ['category_slug' => Str::slug('Fashion & Accessories')]) }}">Continue Shopping<i class="fa fa-arrow-circle-right"
                             aria-hidden="true"></i></a>
                 </div>
                 <div class="update-clear">
